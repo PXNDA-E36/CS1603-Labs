@@ -3,7 +3,7 @@ import java.util.Collections;
 
 public class Task6 {
     public static void main(String[] args) {
-        Task3();
+        Task4();
     }
 
     public static void Task1() {
@@ -67,13 +67,61 @@ public class Task6 {
     }
 
     public static void Task3() {
-        String animal = "Cat";
-        int legs;
+        String animal = "bob";
+        int legs = 0;
 
         switch (animal) {
-            case "Alsation Dog", "Sphynx Cat":
+            case "Centipede":
+                // Calculates how many even numbers in range 30-382 inclusive
+                // Picks a random index
+                // Multiplies index by 2 to ensure an even number
+                // Shifts index by 30 to fit target range
+                // Casts to int as Math.random() returns a double
+                legs = 30 + 2 * (int) (Math.random() * (((382 - 30) / 2) + 1));
+                break;
+            case "Tarantula", "Black Scorpion":
+                legs = 8;
+                break;
+            case "Alsation Dog", "Sphynx Cat", "Ocelot", "Klingon":
                 legs = 4;
                 break;
+            case "Baboon", "Human", "Potto":
+                legs = 2;
+                break;
+            case "Cobra", "Cod", "Paul Allen the German Octopus", "Minke Whale":
+                legs = 0;
+                break;
+            default:
+                System.out.println("Unknown animal");
+                System.exit(0);
         }
+
+        System.out.println("This animal has " + legs + " legs");
+    }
+
+    public static void Task4() {
+        String animal = "Tarantula";
+
+        int legs = animal.equals("Centipede")
+                ? (30 + 2 * (int) (Math.random() * (((382 - 30) / 2) + 1)))
+                : (animal.equals("Tarantula") || animal.equals("Black Scorpion"))
+                        ? 8
+                        : (animal.equals("Alsation Dog") || animal.equals("Sphynx Cat")
+                                || animal.equals("Ocelot") || animal.equals("Klingon"))
+                                        ? 4
+                                        : (animal.equals("Baboon") || animal.equals("Human") || animal.equals("Potto"))
+                                                ? 2
+                                                : (animal.equals("Cobra") || animal.equals("Cod")
+                                                        || animal.equals("Paul Allen the German Octopus")
+                                                        || animal.equals("Minke Whale"))
+                                                                ? 0
+                                                                : -1;
+
+        if (legs == -1) {
+            System.out.println("Unknown animal");
+            System.exit(0);
+        }
+
+        System.out.println("This animal has " + legs + " legs");
     }
 }
